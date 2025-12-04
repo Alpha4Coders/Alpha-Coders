@@ -4,8 +4,19 @@ import { useState, useMemo, useEffect } from 'react';
 import type { GithubProject } from '@/types';
 import { ProjectCard } from '@/components/project-card';
 import { Button } from '@/components/ui/button';
-import { FolderKanban } from 'lucide-react';
 import { Skeleton } from '@/components/ui/skeleton';
+import { MotionDiv } from './motion-div';
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 export default function ProjectsSection() {
   const [projects, setProjects] = useState<GithubProject[]>([]);
@@ -19,7 +30,9 @@ export default function ProjectsSection() {
         const response = await fetch('https://api.github.com/orgs/Alpha4Coders/repos?sort=updated&direction=desc');
         if (response.ok) {
           const data = await response.json();
-          setProjects(data);
+          // Filter out forks
+          const nonForkProjects = data.filter((project: { fork: any; }) => !project.fork);
+          setProjects(nonForkProjects);
         } else {
           console.error('Failed to fetch projects from GitHub');
         }
@@ -77,35 +90,26 @@ export default function ProjectsSection() {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (
-             <Card className="flex flex-col h-full">
-              <CardHeader>
-                <Skeleton className="h-6 w-3/4" />
-                <Skeleton className="h-4 w-full mt-2" />
-                <Skeleton className="h-4 w-1/2 mt-1" />
-              </CardHeader>
-              <CardContent className="flex-grow space-y-4">
-                 <Skeleton className="h-6 w-1/4" />
-                 <Skeleton className="h-5 w-1/3" />
-              </CardContent>
-              <CardFooter>
-                 <Skeleton className="h-10 w-full" />
-              </CardFooter>
-            </Card>
+             <ProjectCardSkeleton key={i} />
           ))}
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <MotionDiv 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {filteredProjects.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
+        </MotionDiv>
       )}
     </section>
   );
 }
 
-// Add Skeleton for Card to avoid repetition
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 function ProjectCardSkeleton() {
   return (
     <Card className="flex flex-col h-full">
