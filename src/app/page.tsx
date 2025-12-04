@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, CodeXml, Users, Zap, BrainCircuit } from 'lucide-react';
+import { ArrowRight, Zap, BrainCircuit, Users } from 'lucide-react';
 import ProjectsSection from '@/components/projects-section';
 import { MotionDiv } from '@/components/motion-div';
+import './custom-styles.css';
 
 const featureVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -77,7 +78,7 @@ export default function Home() {
               transition={{ staggerChildren: 0.2 }}
               className="grid grid-cols-1 md:grid-cols-3 gap-8"
             >
-              <MotionDiv variants={featureVariants} className="flex flex-col items-center text-center p-6 rounded-xl border-transparent">
+              <MotionDiv variants={featureVariants} className="glowing-card flex flex-col items-center text-center p-6">
                 <div className="p-3 rounded-full bg-primary/10 mb-4">
                   <Zap className="h-8 w-8 text-primary" />
                 </div>
@@ -86,7 +87,7 @@ export default function Home() {
                   Tackle exciting projects and contribute to open-source software that makes a difference.
                 </p>
               </MotionDiv>
-              <MotionDiv variants={featureVariants} className="flex flex-col items-center text-center p-6 rounded-xl border-transparent">
+              <MotionDiv variants={featureVariants} className="glowing-card flex flex-col items-center text-center p-6">
                 <div className="p-3 rounded-full bg-primary/10 mb-4">
                   <BrainCircuit className="h-8 w-8 text-primary" />
                 </div>
@@ -95,7 +96,7 @@ export default function Home() {
                   Expand your skills with the help of experienced mentors and a supportive learning environment.
                 </p>
               </MotionDiv>
-              <MotionDiv variants={featureVariants} className="flex flex-col items-center text-center p-6 rounded-xl border-transparent">
+              <MotionDiv variants={featureVariants} className="glowing-card flex flex-col items-center text-center p-6">
                 <div className="p-3 rounded-full bg-primary/10 mb-4">
                   <Users className="h-8 w-8 text-primary" />
                 </div>

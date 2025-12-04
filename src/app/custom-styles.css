@@ -1,0 +1,47 @@
+.glowing-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.glowing-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  border: 2px solid transparent;
+  background: conic-gradient(from 180deg at 50% 50%, rgba(255, 255, 255, 0.8) 0deg, rgba(255, 255, 255, 0) 360deg);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+.glowing-card:hover::before {
+  opacity: 1;
+}
+
+.dark .glowing-card::before {
+   background: conic-gradient(from 180deg at 50% 50%, hsl(var(--primary)) 0deg, rgba(255, 255, 255, 0) 360deg);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
