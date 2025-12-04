@@ -11,10 +11,10 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card className="flex flex-col h-full transition-all hover:shadow-accent/20 hover:shadow-lg hover:-translate-y-1">
+    <Card className="flex flex-col h-full bg-card/50 transition-all hover:shadow-lg hover:-translate-y-1 hover:border-primary/50">
       <CardHeader>
         <CardTitle>{project.name}</CardTitle>
-        <CardDescription>{project.description}</CardDescription>
+        <CardDescription className="h-10 overflow-hidden">{project.description}</CardDescription>
       </CardHeader>
       <CardContent className="flex-grow space-y-4">
         {project.language && (
