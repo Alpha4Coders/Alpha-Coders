@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Zap, BrainCircuit, Users } from 'lucide-react';
 import ProjectsSection from '@/components/projects-section';
@@ -21,6 +22,16 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="mx-auto max-w-3xl space-y-6"
           >
+            <div className="flex justify-center mb-6">
+              <Image
+                src="/AlphaCoders.png"
+                alt="Alpha Coders Logo"
+                width={120}
+                height={120}
+                className="rounded-lg"
+                priority
+              />
+            </div>
             <div className="inline-block rounded-lg bg-secondary px-3 py-1 text-sm">
               Welcome to Alpha Coders
             </div>
