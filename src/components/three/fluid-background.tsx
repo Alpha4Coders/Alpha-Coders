@@ -21,8 +21,8 @@ function Particles({ count = 100, theme = "dark" }) {
     const dummy = useMemo(() => new THREE.Object3D(), []);
 
     // Choose particle color based on theme
-    const particleColor = theme === 'light' ? "#3b82f6" : "#60a5fa"; // Darker blue for light mode, Lighter blue for dark mode
-    const emissiveColor = theme === 'light' ? "#1d4ed8" : "#3b82f6";
+    const particleColor = theme === 'light' ? "#3b82f6" : "#22c55e"; // Blue for light mode, Green for dark mode
+    const emissiveColor = theme === 'light' ? "#1d4ed8" : "#16a34a";
 
     useFrame((state) => {
         if (!mesh.current) return;

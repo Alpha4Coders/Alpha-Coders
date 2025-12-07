@@ -40,7 +40,7 @@ export const Dock = () => {
                     {mounted && theme === 'dark' ? (
                         <Sun className="h-full w-full text-yellow-300" />
                     ) : (
-                        <Moon className="h-full w-full text-blue-200" />
+                        <Moon className="h-full w-full text-emerald-200" />
                     )}
                 </DockIcon>
             </div>
