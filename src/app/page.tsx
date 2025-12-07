@@ -99,7 +99,7 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="mx-auto max-w-4xl space-y-8">
             <div className="hero-logo flex justify-center mb-8 relative">
-              <div className="absolute inset-0 bg-blue-500/20 blur-3xl rounded-full transform scale-150" />
+              <div className="absolute inset-0 bg-emerald-500/20 blur-3xl rounded-full transform scale-150" />
               <Image
                 src="/AlphaCoders.png"
                 alt="Alpha Coders Logo"
@@ -118,19 +118,19 @@ export default function Home() {
               <h1 className="text-5xl font-extrabold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl text-neutral-900 dark:text-white drop-shadow-2xl">
                 Code with Passion
               </h1>
-              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-blue-600 dark:text-blue-200/80">
+              <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl text-emerald-600 dark:text-emerald-400/80">
                 Build the Future
               </h1>
             </div>
 
-            <p className="hero-text text-lg text-neutral-600 dark:text-blue-100/80 md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+            <p className="hero-text text-lg text-neutral-600 dark:text-emerald-100/80 md:text-xl max-w-2xl mx-auto leading-relaxed drop-shadow-md">
               A tight-knit community of 45+ passionate developers from India. We are the next generation of open-source contributors.
             </p>
 
             <div className="hero-buttons flex flex-col sm:flex-row gap-4 justify-center mt-10 items-center">
               <GsapMagnetic>
                 <div className="inline-block">
-                  <Button asChild size="xl" className="h-14 px-8 text-lg rounded-full shadow-lg hover:shadow-blue-500/50 transition-all bg-white text-black hover:bg-gray-100 border-none">
+                  <Button asChild size="xl" className="h-14 px-8 text-lg rounded-full shadow-lg hover:shadow-emerald-500/50 transition-all bg-white text-black hover:bg-gray-100 border-none">
                     <Link href="https://github.com/Alpha4Coders" target="_blank" rel="noopener noreferrer">
                       Join the 45
                     </Link>
@@ -158,7 +158,7 @@ export default function Home() {
           <div className="mx-auto max-w-6xl space-y-20">
             <div className="text-center max-w-3xl mx-auto space-y-4">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-neutral-900 dark:text-white">Why Join Alpha Coders?</h2>
-              <p className="text-neutral-600 dark:text-blue-200/60 text-lg md:text-xl">
+              <p className="text-neutral-600 dark:text-emerald-200/60 text-lg md:text-xl">
                 We are small, focused, and growing together.
               </p>
             </div>
@@ -171,11 +171,11 @@ export default function Home() {
               ].map((feature, i) => (
                 <div key={i} className="feature-card group relative p-8 rounded-3xl bg-white/50 dark:bg-white/5 border border-neutral-200 dark:border-white/10 hover:border-neutral-300 dark:hover:border-white/20 backdrop-blur-xl transition-all hover:-translate-y-2 duration-300">
                   <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-                    <div className="p-4 rounded-2xl bg-blue-500/10 dark:bg-blue-500/20 text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform duration-300 ease-out">
+                    <div className="p-4 rounded-2xl bg-emerald-500/10 dark:bg-emerald-500/20 text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform duration-300 ease-out">
                       <feature.icon className="h-10 w-10" />
                     </div>
                     <h3 className="text-2xl font-bold text-neutral-900 dark:text-white">{feature.title}</h3>
-                    <p className="text-neutral-600 dark:text-blue-200/60 leading-relaxed">
+                    <p className="text-neutral-600 dark:text-emerald-200/60 leading-relaxed">
                       {feature.desc}
                     </p>
                   </div>
@@ -199,12 +199,12 @@ export default function Home() {
         <div className="container mx-auto px-4 md:px-6 text-center">
           <div className="mx-auto max-w-3xl space-y-8">
             <h2 className="text-4xl font-bold tracking-tighter sm:text-5xl text-neutral-900 dark:text-white">Ready to be #46?</h2>
-            <p className="mx-auto max-w-2xl text-neutral-600 dark:text-blue-200/60 text-lg md:text-xl">
+            <p className="mx-auto max-w-2xl text-neutral-600 dark:text-emerald-200/60 text-lg md:text-xl">
               We are looking for the next core member to join our journey.
             </p>
             <GsapMagnetic>
               <div className="inline-block mt-4">
-                <Button asChild size="xl" className="h-16 px-10 text-xl rounded-full shadow-2xl hover:shadow-blue-500/50 transition-all duration-500 bg-white text-black hover:bg-gray-200">
+                <Button asChild size="xl" className="h-16 px-10 text-xl rounded-full shadow-2xl hover:shadow-emerald-500/50 transition-all duration-500 bg-white text-black hover:bg-gray-200">
                   <Link href="https://github.com/Alpha4Coders" target="_blank" rel="noopener noreferrer">
                     Join Our Discord
                     <ArrowRight className="ml-3 h-6 w-6" />

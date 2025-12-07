@@ -58,7 +58,7 @@ export default function CommunityPage() {
           <h1 className="community-hero-title text-5xl md:text-7xl font-bold tracking-tighter text-neutral-900 dark:text-white drop-shadow-2xl mb-6">
             India's Next Gen<br />Coders
           </h1>
-          <p className="community-hero-desc text-xl text-neutral-600 dark:text-blue-100/80 max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md">
+          <p className="community-hero-desc text-xl text-neutral-600 dark:text-emerald-100/80 max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-md">
             A small, high-impact group building big things. Connect with the best upcoming talent in the region.
           </p>
 
@@ -97,9 +97,9 @@ export default function CommunityPage() {
             <div className="flex justify-between items-end mb-8">
               <div>
                 <h2 className="text-3xl font-bold tracking-tight mb-2 text-neutral-900 dark:text-white">Core Team & Members</h2>
-                <p className="text-neutral-500 dark:text-blue-200/60">Highlighted projects built by our Founding Members.</p>
+                <p className="text-neutral-500 dark:text-emerald-200/60">Highlighted projects built by our Founding Members.</p>
               </div>
-              <Button variant="ghost" className="text-blue-600 dark:text-blue-300 hover:text-blue-800 dark:hover:text-blue-200">
+              <Button variant="ghost" className="text-emerald-600 dark:text-emerald-300 hover:text-emerald-800 dark:hover:text-emerald-200">
                 View All <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -115,10 +115,10 @@ export default function CommunityPage() {
 
             <div className="p-6 rounded-2xl border border-neutral-200 dark:border-white/20 bg-white/50 dark:bg-white/5 backdrop-blur-xl shadow-2xl">
               <h3 className="text-xl font-bold mb-2 text-neutral-900 dark:text-white">Join the Core Team</h3>
-              <p className="text-neutral-600 dark:text-blue-200/60 mb-4">
+              <p className="text-neutral-600 dark:text-emerald-200/60 mb-4">
                 We are looking for maintainers and community managers for our growing India chapter.
               </p>
-              <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white border-0" variant="secondary">Apply Now</Button>
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border-0" variant="secondary">Apply Now</Button>
             </div>
           </div>
 
@@ -127,10 +127,10 @@ export default function CommunityPage() {
 
       {/* Footer CTA & Socials */}
       <section className="py-24 border-t border-neutral-200 dark:border-white/10 relative overflow-hidden z-10">
-        <div className="absolute inset-0 bg-blue-50/50 dark:bg-blue-900/10" />
+        <div className="absolute inset-0 bg-emerald-50/50 dark:bg-emerald-900/10" />
         <div className="container relative mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-6 text-neutral-900 dark:text-white">Ready to make an impact?</h2>
-          <p className="text-xl text-neutral-600 dark:text-blue-200/60 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-neutral-600 dark:text-emerald-200/60 mb-8 max-w-2xl mx-auto">
             Join 45+ other developers in the community.
           </p>
           <GsapMagnetic>
@@ -154,7 +154,7 @@ export default function CommunityPage() {
                 <span className="sr-only">X (Twitter)</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6"><path d="M4 4l11.733 16h4.267l-11.733 -16z" /><path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" /></svg>
               </Link>
-              <Link href="https://www.linkedin.com/company/alpha4coders" target="_blank" className="text-neutral-400 hover:text-blue-600 transition-colors">
+              <Link href="https://www.linkedin.com/company/alpha4coders" target="_blank" className="text-neutral-400 hover:text-emerald-600 transition-colors">
                 <span className="sr-only">LinkedIn</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg>
               </Link>

@@ -64,7 +64,7 @@ export default function StatsSection() {
                         {/* Render Icon if available (for India flag) */}
                         {stat.text ? stat.text : "0"}
                     </div>
-                    <div className="text-sm font-medium text-neutral-500 dark:text-blue-200/60 uppercase tracking-widest">
+                    <div className="text-sm font-medium text-neutral-500 dark:text-emerald-200/60 uppercase tracking-widest">
                         {stat.label}
                     </div>
                 </div>

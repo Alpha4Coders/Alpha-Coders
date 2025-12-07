@@ -72,7 +72,7 @@ export default function ShowcaseGrid() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
                 {displayedMembers.map((member, i) => (
                     <div key={i} className="member-card group relative p-6 rounded-2xl border border-neutral-200 dark:border-white/10 bg-white/50 dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-md">
-                        <div className="relative h-16 w-16 flex-shrink-0 rounded-full overflow-hidden border-2 border-neutral-200 dark:border-white/20 group-hover:border-blue-500 transition-colors">
+                        <div className="relative h-16 w-16 flex-shrink-0 rounded-full overflow-hidden border-2 border-neutral-200 dark:border-white/20 group-hover:border-emerald-500 transition-colors">
                             <Image
                                 src={`https://github.com/${member.login}.png`}
                                 alt={member.login}
@@ -82,14 +82,14 @@ export default function ShowcaseGrid() {
                         </div >
 
                         <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors truncate">
+                            <h3 className="text-lg font-bold text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors truncate">
                                 {member.name || member.login}
                             </h3>
                             <p className="text-xs text-neutral-500 truncate mb-2">@{member.login}</p>
 
                             <div className="flex gap-2">
                                 {member.role === "Owner" ? (
-                                    <Badge variant="default" className="text-[10px] px-2 py-0 h-5 bg-blue-600 hover:bg-blue-700 text-white border-0">
+                                    <Badge variant="default" className="text-[10px] px-2 py-0 h-5 bg-emerald-600 hover:bg-emerald-700 text-white border-0">
                                         Core Team
                                     </Badge>
                                 ) : (
