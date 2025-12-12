@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
     { label: "Community Members", value: 100, suffix: "+" },
-    { label: "GitHub Members", value: 25, suffix: "+" },
+    { label: "GitHub Members", value: 29, suffix: "+" },
     { label: "Lines of Code", value: 50000, suffix: "+" },
     { label: "Projects", value: 20, suffix: "+" },
 ];

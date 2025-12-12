@@ -118,7 +118,9 @@ export default function CommunityPage() {
               <p className="text-neutral-600 dark:text-emerald-200/60 mb-4">
                 We are looking for maintainers and community managers for our growing India chapter.
               </p>
-              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border-0" variant="secondary">Apply Now</Button>
+              <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white border-0" variant="secondary">
+                <Link href="mailto:alpha4coders@gmail.com?subject=Application to Join Alpha Coders Core Team">Apply Now</Link>
+              </Button>
             </div>
           </div>
 
