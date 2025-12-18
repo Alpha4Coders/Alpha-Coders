@@ -35,7 +35,7 @@ export const members: Member[] = [
     { "login": "Sritamsarkar-2028", "name": null, "tfa_enabled": false, "is_public": false, "role": "Member", "tfa_level": "disabled", "organization_roles_count": 0 },
     { "login": "sunny-source", "name": "sunny kumar", "tfa_enabled": false, "is_public": false, "role": "Member", "tfa_level": "disabled", "organization_roles_count": 0 },
     { "login": "SuperiorDevelop", "name": null, "tfa_enabled": false, "is_public": false, "role": "Member", "tfa_level": "disabled", "organization_roles_count": 0 },
-    { "login": "Vortex-16", "name": "", "tfa_enabled": true, "is_public": false, "role": "Owner", "tfa_level": "secure", "organization_roles_count": 0 },
+    { "login": "Vortex-16", "name": "Vikash", "tfa_enabled": true, "is_public": false, "role": "Owner", "tfa_level": "secure", "organization_roles_count": 0 },
     { "login": "yourajdeep", "name": "Rajdeep Das", "tfa_enabled": true, "is_public": false, "role": "Member", "tfa_level": "secure", "organization_roles_count": 0 },
     { "login": "zin-web", "name": null, "tfa_enabled": false, "is_public": false, "role": "Member", "tfa_level": "disabled", "organization_roles_count": 0 }
 ];
