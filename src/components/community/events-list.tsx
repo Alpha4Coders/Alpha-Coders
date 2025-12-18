@@ -12,11 +12,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const events = [
     {
-        title: "AlphaHacks",
-        date: "Dec 15, 2025 • 12 Hrs",
-        location: "Vibe Coding Hackathon",
-        desc: "A 12-hour intense coding marathon. Build, vibe, and ship.",
-        link: "#"
+        title: "Apertre 3.0 Mentee Registration",
+        date: "45 Days • Time to Deployment",
+        location: "Open Source Program",
+        desc: "🚀 Transform your skills and build your open-source portfolio with guidance from top-tier mentors. Your journey to brilliance starts now!",
+        link: "https://apertre.resourcio.in/register?role=mentee&ref=34KE2E"
     },
     {
         title: "Learning Resources",
