@@ -5,7 +5,7 @@ import { useRef, useMemo, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Github } from "lucide-react";
+import { Github, ShieldCheck, Crown } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,28 +26,24 @@ export default function ShowcaseGrid() {
             const aIsOwner = a.role === "Owner";
             const bIsOwner = b.role === "Owner";
 
-            // Both are owners - use custom order
             if (aIsOwner && bIsOwner) {
                 const aIndex = coreTeamOrder.indexOf(a.login);
                 const bIndex = coreTeamOrder.indexOf(b.login);
                 return aIndex - bIndex;
             }
 
-            // One is owner, one is not
             if (aIsOwner && !bIsOwner) return -1;
             if (!aIsOwner && bIsOwner) return 1;
 
-            // Both are members - alphabetical by name or login
             const aName = (a.name || a.login).toLowerCase();
             const bName = (b.name || b.login).toLowerCase();
             return aName.localeCompare(bName);
         });
     }, []);
 
-    // Filter to show only Core Team or all members
     const displayedMembers = showAll
         ? sortedMembers
-        : sortedMembers.filter(m => m.role === "Owner");
+        : sortedMembers.filter(m => m.role === "Owner" || coreTeamOrder.includes(m.login));
 
     useGSAP(() => {
         gsap.from(".member-card", {
@@ -55,108 +51,127 @@ export default function ShowcaseGrid() {
                 trigger: container.current,
                 start: "top 80%",
             },
-            y: 50,
+            y: 30,
+            opacity: 0,
             duration: 0.8,
             stagger: 0.05,
-            ease: "power3.out",
+            ease: "power2.out",
         });
     }, { scope: container });
 
-    // Refresh ScrollTrigger when list size changes to prevent glitches
     useGSAP(() => {
         ScrollTrigger.refresh();
     }, [showAll]);
 
     return (
-        <div ref={container} className="space-y-6">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+        <div ref={container} className="space-y-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 p-1">
                 {displayedMembers.map((member, i) => {
                     const isOwner = member.role === "Owner";
                     return (
                         <div
                             key={i}
-                            className={`member-card group relative p-6 border transition-all duration-300 flex items-center gap-4 shadow-sm hover:shadow-lg overflow-hidden ${isOwner
-                                ? "bg-gradient-to-br from-emerald-50 via-white to-emerald-50 dark:from-emerald-950/30 dark:via-neutral-900 dark:to-emerald-950/30 border-emerald-200 dark:border-emerald-500/30 rounded-2xl"
-                                : "bg-white/50 dark:bg-white/5 border-neutral-200 dark:border-white/10 hover:bg-neutral-100 dark:hover:bg-white/10 rounded-2xl"
+                            className={`member-card group relative p-5 flex items-center gap-5 transition-all duration-500 border overflow-hidden rounded-3xl ${isOwner
+                                ? "bg-white/10 dark:bg-emerald-500/5 border-emerald-500/30 hover:border-emerald-500/60 shadow-[0_0_20px_-5px_rgba(16,185,129,0.1)] hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.2)]"
+                                : "bg-white/5 dark:bg-white-[0.02] border-neutral-200 dark:border-white/10 hover:border-emerald-500/30 hover:bg-neutral-50/50 dark:hover:bg-white-[0.04]"
                                 }`}
-                            style={isOwner ? { clipPath: "polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%)" } : undefined}
                         >
-                            {/* Folded Corner for Core Team */}
+                            {/* Animated Background Glow for Core Team */}
                             {isOwner && (
-                                <>
-                                    {/* The fold effect */}
-                                    <div className="absolute top-0 right-0 w-[30px] h-[30px]">
-                                        <div
-                                            className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-t-[30px] border-t-emerald-400 dark:border-t-emerald-500"
-                                        />
-                                        <div
-                                            className="absolute top-0 right-0 w-0 h-0 border-r-[30px] border-r-emerald-200 dark:border-r-emerald-700 border-b-[30px] border-b-transparent"
-                                        />
-                                    </div>
-                                    {/* Glow effect for core team */}
-                                    <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/5 via-transparent to-emerald-500/5 pointer-events-none" />
-                                </>
+                                <div className="absolute -inset-24 bg-emerald-500/10 blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                             )}
 
-                            <div className={`relative h-16 w-16 flex-shrink-0 overflow-hidden border-2 transition-colors ${isOwner
-                                ? "rounded-xl border-emerald-400 dark:border-emerald-500 ring-2 ring-emerald-200 dark:ring-emerald-500/30"
-                                : "rounded-full border-neutral-200 dark:border-white/20 group-hover:border-emerald-500"
-                                }`}>
-                                <Image
-                                    src={`https://github.com/${member.login}.png`}
-                                    alt={member.login}
-                                    fill
-                                    className="object-cover"
-                                />
+                            {/* Profile Image Container */}
+                            <div className="relative group/avatar">
+                                <div className={`relative h-20 w-20 flex-shrink-0 overflow-hidden transition-all duration-500 z-10 ${isOwner
+                                    ? "rounded-2xl ring-4 ring-emerald-500/20 group-hover:ring-emerald-500/40"
+                                    : "rounded-full grayscale group-hover:grayscale-0 group-hover:scale-105"
+                                    }`}>
+                                    <Image
+                                        src={`https://github.com/${member.login}.png`}
+                                        alt={member.login}
+                                        fill
+                                        className="object-cover"
+                                        sizes="80px"
+                                    />
+                                </div>
+                                {isOwner && (
+                                    <div className="absolute -top-2 -right-2 bg-emerald-500 text-white p-1 rounded-lg shadow-lg z-20 animate-bounce-subtle">
+                                        <Crown size={14} />
+                                    </div>
+                                )}
                             </div>
 
-                            <div className="flex-1 min-w-0">
-                                <h3 className={`text-lg font-bold transition-colors truncate ${isOwner
-                                    ? "text-emerald-700 dark:text-emerald-300"
-                                    : "text-neutral-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400"
-                                    }`}>
-                                    {member.name || member.login}
-                                </h3>
-                                <p className="text-xs text-neutral-500 truncate mb-2">@{member.login}</p>
-
-                                <div className="flex gap-2">
-                                    {isOwner ? (
-                                        <Badge variant="default" className="text-[10px] px-2 py-0 h-5 bg-emerald-600 hover:bg-emerald-700 text-white border-0 shadow-sm whitespace-nowrap">
-                                            Core Team
-                                        </Badge>
-                                    ) : (
-                                        <Badge variant="outline" className="text-[10px] px-2 py-0 h-5 border-neutral-200 dark:border-white/20 text-neutral-600 dark:text-neutral-400">
-                                            Member
-                                        </Badge>
-                                    )}
+                            {/* Member Info */}
+                            <div className="flex-1 min-w-0 z-10">
+                                <div className="flex items-center gap-1.5 mb-1">
+                                    <h3 className={`text-lg font-bold truncate tracking-tight transition-colors ${isOwner
+                                        ? "text-neutral-900 dark:text-emerald-50"
+                                        : "text-neutral-700 dark:text-neutral-300 group-hover:text-emerald-500"
+                                        }`}>
+                                        {member.name || member.login}
+                                    </h3>
                                     {member.tfa_enabled && (
-                                        <Badge variant="secondary" className="text-[10px] px-2 py-0 h-5 bg-green-500/10 text-green-600 dark:text-green-400 border-0 hidden sm:inline-flex">
-                                            Verified
-                                        </Badge>
+                                        <ShieldCheck className="h-4 w-4 text-emerald-500 flex-shrink-0" />
                                     )}
+                                </div>
+                                <p className="text-sm font-medium text-neutral-500/80 dark:text-neutral-500 mb-3">
+                                    @{member.login}
+                                </p>
+
+                                <div className="flex flex-wrap gap-2">
+                                    <Badge
+                                        variant="outline"
+                                        className={`text-[10px] uppercase tracking-wider font-bold h-6 border-0 ${isOwner
+                                            ? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+                                            : "bg-neutral-100 dark:bg-white/5 text-neutral-500"
+                                            }`}
+                                    >
+                                        {isOwner ? "Core Team" : "Member"}
+                                    </Badge>
+
+                                    <Link
+                                        href={`https://github.com/${member.login}`}
+                                        target="_blank"
+                                        className="inline-flex items-center gap-1 text-[10px] font-bold text-neutral-400 hover:text-emerald-500 transition-colors uppercase tracking-wider"
+                                    >
+                                        <Github size={12} />
+                                        Profile
+                                    </Link>
                                 </div>
                             </div>
 
-                            <div className="absolute top-4 right-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                                <Link href={`https://github.com/${member.login}`} target="_blank" className={`${isOwner ? "text-emerald-500 hover:text-emerald-700" : "text-neutral-400 hover:text-black dark:hover:text-white"}`}>
-                                    <Github className="h-5 w-5" />
-                                </Link>
+                            {/* Hover Decorative Element */}
+                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Github size={60} className="-mr-6 -mt-6" />
                             </div>
                         </div>
                     );
                 })}
-            </div >
+            </div>
 
-            {/* Show All / Show Less Button */}
-            <div className="flex justify-center">
+            <div className="flex justify-center pt-4">
                 <Button
                     onClick={() => setShowAll(!showAll)}
                     variant="outline"
-                    className="border-neutral-200 dark:border-white/20 hover:bg-neutral-100 dark:hover:bg-white/10"
+                    className="group relative h-12 px-8 rounded-full border-neutral-200 dark:border-white/10 hover:border-emerald-500/50 bg-white/50 dark:bg-white/5 backdrop-blur-md transition-all duration-300"
                 >
-                    {showAll ? "Show Core Team Only" : `Show All ${members.length} Members`}
+                    <span className="relative z-10 flex items-center gap-2 font-semibold">
+                        {showAll ? "Show Core Team Only" : `View All ${members.length} Members`}
+                    </span>
+                    <div className="absolute inset-0 rounded-full bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Button>
             </div>
-        </div >
+
+            <style jsx global>{`
+                @keyframes bounce-subtle {
+                    0%, 100% { transform: translateY(0); }
+                    50% { transform: translateY(-3px); }
+                }
+                .animate-bounce-subtle {
+                    animation: bounce-subtle 2s ease-in-out infinite;
+                }
+            `}</style>
+        </div>
     );
 }
